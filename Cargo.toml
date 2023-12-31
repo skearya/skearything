@@ -1,0 +1,15 @@
+[package]
+name = "skeary_thing"
+version = "0.1.0"
+edition = "2021"
+default-run = "skeary_thing"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+chrono = "0.4.31"
+dotenvy = "0.15.7"
+serenity = "0.12"
+tokio = { version = "1.21.2", features = ["macros", "rt-multi-thread"] }
+tokio-cron-scheduler = "0.9.4"
+sqlx = { version = "0.7", features = ["runtime-tokio", "sqlite"] }
