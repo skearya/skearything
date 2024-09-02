@@ -1,6 +1,5 @@
 /.git
-/sql
-!/sql/schema.sql
+/main.db
 /target
 .env
 

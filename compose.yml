@@ -1,0 +1,9 @@
+services:
+  skeary-thing:
+    image: "ghcr.io/skearya/skearything"
+    env_file: ".env"
+    volumes:
+      - db:/db
+
+volumes:
+  db:

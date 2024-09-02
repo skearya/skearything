@@ -4,6 +4,6 @@
 **/._.DS_Store
 /target
 .env
-sql/main.db
-sql/main.db-shm
-sql/main.db-wal
+main.db
+main.db-shm
+main.db-wal
