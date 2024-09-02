@@ -1,0 +1,6 @@
+/.git
+/sql
+!/sql/schema.sql
+/target
+.env
+
