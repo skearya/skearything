@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT\n                    OR IGNORE INTO servers(server_id)\n                VALUES\n                    (?);\n\n                UPDATE\n                    servers\n                SET\n                    vc_logs_channel = ?\n                WHERE\n                    server_id = ?;",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": []
+  },
+  "hash": "a08e731b7a8ed203b3c83cb1ed74cbe9491a408dcff15fc3cd95882060e3ba2c"
+}

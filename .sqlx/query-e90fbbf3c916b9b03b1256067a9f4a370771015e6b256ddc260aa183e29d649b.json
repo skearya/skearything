@@ -1,0 +1,26 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT\n                                daily_log_channel,\n                                vc_seconds_elapsed\n                            FROM\n                                servers\n                                LEFT JOIN days ON servers.server_id = days.server_id\n                                AND days.day = ?\n                            WHERE\n                                daily_log_channel IS NOT NULL;",
+  "describe": {
+    "columns": [
+      {
+        "name": "daily_log_channel",
+        "ordinal": 0,
+        "type_info": "Integer"
+      },
+      {
+        "name": "vc_seconds_elapsed",
+        "ordinal": 1,
+        "type_info": "Float"
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      true,
+      true
+    ]
+  },
+  "hash": "e90fbbf3c916b9b03b1256067a9f4a370771015e6b256ddc260aa183e29d649b"
+}

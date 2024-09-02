@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "CREATE TABLE IF NOT EXISTS servers(\r\n    server_id INTEGER PRIMARY KEY,\r\n    daily_log_channel INTEGER,\r\n    vc_logs_channel INTEGER\r\n);\r\n\r\nCREATE TABLE IF NOT EXISTS days(\r\n    day TEXT NOT NULL,\r\n    server_id INTEGER NOT NULL,\r\n    messages_sent INTEGER,\r\n    unique_chatters INTEGER,\r\n    vc_seconds_elapsed REAL DEFAULT 0,\r\n    FOREIGN KEY (server_id) REFERENCES servers(server_id),\r\n    PRIMARY KEY (day, server_id)\r\n);",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 0
+    },
+    "nullable": []
+  },
+  "hash": "5e580808619d0193db5e05df6c1934290fe4a42f9e7356f2074aae55faea7389"
+}

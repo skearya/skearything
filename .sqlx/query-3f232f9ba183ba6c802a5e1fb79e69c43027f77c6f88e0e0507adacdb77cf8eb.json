@@ -1,0 +1,20 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT\n                vc_logs_channel\n            FROM\n                servers\n            WHERE\n                server_id = ?;",
+  "describe": {
+    "columns": [
+      {
+        "name": "vc_logs_channel",
+        "ordinal": 0,
+        "type_info": "Integer"
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      true
+    ]
+  },
+  "hash": "3f232f9ba183ba6c802a5e1fb79e69c43027f77c6f88e0e0507adacdb77cf8eb"
+}

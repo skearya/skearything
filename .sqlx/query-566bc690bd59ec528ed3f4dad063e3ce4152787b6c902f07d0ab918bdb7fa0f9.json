@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT\n                    OR IGNORE INTO servers(server_id)\n                VALUES\n                    (?);\n\n                UPDATE\n                    servers\n                SET\n                    daily_log_channel = ?\n                WHERE\n                    server_id = ?;",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": []
+  },
+  "hash": "566bc690bd59ec528ed3f4dad063e3ce4152787b6c902f07d0ab918bdb7fa0f9"
+}

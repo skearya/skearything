@@ -1,0 +1,20 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT\n                vc_seconds_elapsed\n            FROM\n                days\n            WHERE\n                server_id = ?\n                AND day = ?;",
+  "describe": {
+    "columns": [
+      {
+        "name": "vc_seconds_elapsed",
+        "ordinal": 0,
+        "type_info": "Float"
+      }
+    ],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": [
+      true
+    ]
+  },
+  "hash": "8b1e496b6f367eba06daac2282a6e956492211fb1d0a2547099ab0ff07148abb"
+}

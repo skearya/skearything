@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "UPDATE\n            servers\n        SET\n            daily_log_channel = NULL\n        WHERE\n            server_id = ?;",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": []
+  },
+  "hash": "fc43b047007aaf819e5641ac85c1e4fc1ce91ba64c8ec9255a62cdc402445c9b"
+}
