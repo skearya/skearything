@@ -48,7 +48,7 @@ impl EventHandler for Handler {
 
 #[tokio::main]
 async fn main() {
-    dotenvy::dotenv().unwrap();
+    dotenvy::dotenv().ok();
 
     let token = env::var("BOT_TOKEN").expect("token");
 

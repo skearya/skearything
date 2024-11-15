@@ -3,6 +3,7 @@ use std::{
     time::{SystemTime, UNIX_EPOCH},
 };
 
+use anyhow::Context;
 use serenity::{
     all::{ChannelId, UserId},
     builder::{CreateEmbed, CreateEmbedFooter, CreateMessage, GetMessages},
@@ -29,27 +30,33 @@ pub async fn send_message_stats(
     http: impl CacheHttp,
     channel: ChannelId,
     vc_seconds_elapsed: Option<f64>,
-) {
+) -> anyhow::Result<()> {
     let mut messages = channel
         .messages(&http, GetMessages::new().limit(100))
-        .await
-        .unwrap();
+        .await?;
 
     let now = SystemTime::now()
         .duration_since(UNIX_EPOCH)
         .expect("Time has gone backwards")
         .as_secs();
 
-    while (now as i64 - messages.last().unwrap().timestamp.unix_timestamp()).abs() <= DAY {
+    while (now as i64
+        - messages
+            .last()
+            .context("No messages")?
+            .timestamp
+            .unix_timestamp())
+    .abs()
+        <= DAY
+    {
         let new_messages = channel
             .messages(
                 &http,
                 GetMessages::new()
-                    .before(messages.last().unwrap().id)
+                    .before(messages.last().context("No messages")?.id)
                     .limit(100),
             )
-            .await
-            .unwrap();
+            .await?;
 
         if new_messages.is_empty() {
             break;
@@ -120,10 +127,9 @@ pub async fn send_message_stats(
         false,
     );
 
-    if let Err(why) = channel
+    channel
         .send_message(&http, CreateMessage::new().add_embed(embed))
-        .await
-    {
-        println!("Failed to send daily message stats: {why}")
-    }
+        .await?;
+
+    Ok(())
 }

@@ -81,7 +81,7 @@ impl EventHandler for Handler {
                         for row in channel_ids {
                             let channel_id = row.daily_log_channel.unwrap();
 
-                            send_message_stats(
+                            let _ = send_message_stats(
                                 &ctx,
                                 ChannelId::new(channel_id.try_into().unwrap()),
                                 row.vc_seconds_elapsed,
@@ -148,13 +148,14 @@ impl EventHandler for Handler {
             };
 
             let builder = CreateInteractionResponse::Message(data);
+
             if let Err(why) = command.create_response(&ctx.http, builder).await {
                 println!("Cannot respond to slash command: {why}");
             }
         }
     }
 
-    // fix eventually: if theres an ongoing vc when the bot starts, the bot will give out wrong data for that session
+    // TODO: If theres an ongoing vc when the bot starts, the bot will give out wrong data for that session
     async fn voice_state_update(&self, ctx: Context, _old: Option<VoiceState>, new: VoiceState) {
         let mut data = ctx.data.write().await;
         let channels = data.get_mut::<VoiceChannelState>().unwrap();
